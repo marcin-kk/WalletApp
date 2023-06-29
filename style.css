@@ -4,8 +4,114 @@
 	padding: 0;
 }
 
+:root {
+	--first-color: #ffecd1;
+	--second-color: #001524;
+	--border-color: rgba(0, 0, 0, 0.2);
+}
 
 body {
-    min-height: 100vh;
-    font-family: 'Montserrat', sans-serif;
+	min-height: 100vh;
+	font-family: "Montserrat", sans-serif;
+	color: var(--second-color);
+	background-color: var(--first-color);
+}
+
+header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 220px;
+	margin-bottom: 40px;
+}
+
+header h1 {
+	margin-bottom: 10px;
+	font-size: 64px;
+	font-weight: 200;
+}
+
+header p {
+	font-size: 24px;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+h2.title {
+	margin-bottom: 30px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 36px;
+	font-weight: 200;
+}
+
+.transactions {
+	width: 1000px;
+}
+
+.transactions h3 {
+	margin-bottom: 30px;
+	font-size: 28px;
+	text-align: center;
+}
+
+.transaction-list {
+	display: flex;
+}
+
+.income-area,
+.expenses-area {
+	margin: 0 20px;
+	padding: 30px;
+	width: 50%;
+	border: 1px solid var(--border-color);
+}
+
+.income-area h3,
+.income-area .transaction-amount {
+	color: rgb(19, 200, 108);
+	font-weight: bold;
+}
+
+.expenses-area h3,
+.expenses-area .transaction-amount {
+	color: rgb(255, 104, 104);
+	font-weight: bold;
+}
+
+.transaction {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.transaction:last-child {
+	border-bottom: none;
+}
+
+.transaction-name {
+	font-size: 18px;
+}
+
+.transaction-name i {
+	margin-right: 10px;
+}
+
+.delete {
+	margin-left: 10px;
+	background: none;
+	border: none;
+	font-size: 18px;
+	cursor: pointer;
+	transition: transform .3s;
+}
+
+.delete:hover {
+	transform: scale(.8);
 }
