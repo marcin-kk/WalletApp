@@ -70,6 +70,34 @@
             </div>
         </section>
 
+        <div class="add-transaction-panel">
+
+            <h2 class="title">Add a new transaction</h2>
+
+            <label for="name">Name:</label>
+            <small>(Enter transaction name)</small>
+            <input type="text" id="name">
+
+            <label for="amount">Amount:</label>
+            <small>(Enter transaction amount. If you are adding an expense, put a minus sign in front of the
+                amount)</small>
+            <input type="number" id="amount">
+
+            <label for="category">Choose category</label>
+            <small>( [ + ] means income, [ - ] means expense)</small>
+            <select name="" id="">
+                <option value="none"></option>
+                <option value="income">[ + ] Income</option>
+                <option value="shopping">[ - ] Shopping</option>
+                <option value="food">[ - ] Food</option>
+                <option value="cinema">[ - ] Entertainment</option>
+            </select>
+
+            <div class="panel-buttons">
+                <button class="save"><i class="fas fa-save"></i>Save</button>
+                <button class="cancel"><i class="far fa-window-close"></i>Cancel</button>
+            </div>
+        </div>
     </main>
 
     <script src="script.js"></script>
