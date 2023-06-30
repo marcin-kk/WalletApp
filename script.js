@@ -6,6 +6,7 @@ const transNameInput = document.querySelector("#name")
 const transAmountInput = document.querySelector("#amount")
 const transCategorySelect = document.querySelector("#category")
 const incomeArea = document.querySelector(".income-area")
+const expenseArea = document.querySelector(".expenses-area")
 
 let selectedCategory
 let categoryIcon
@@ -44,7 +45,15 @@ const createNewtrans = () => {
 	newTransaction.innerHTML = `<p class="transaction-name">${categoryIcon}${transNameInput.value}</p>
     <p class="transaction-amount">${transAmountInput.value} zł<button class="delete"><i class="fas fa-times"></i></button></p>`
 
-	incomeArea.append(newTransaction)
+	assignTransaction(newTransaction)
+}
+
+const assignTransaction = transaction => {
+	if (transAmountInput.value < 0) {
+		expenseArea.append(transaction)
+	} else {
+		incomeArea.append(transaction)
+	}
 }
 
 const clearInputs = () => {
