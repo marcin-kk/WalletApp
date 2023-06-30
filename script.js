@@ -7,7 +7,9 @@ const transAmountInput = document.querySelector("#amount")
 const transCategorySelect = document.querySelector("#category")
 const incomeArea = document.querySelector(".income-area")
 const expenseArea = document.querySelector(".expenses-area")
+const availableMoney = document.querySelector(".available-money")
 
+const fundsArray = []
 let selectedCategory
 let categoryIcon
 
@@ -44,6 +46,10 @@ const createNewtrans = () => {
 
 	newTransaction.innerHTML = `<p class="transaction-name">${categoryIcon}${transNameInput.value}</p>
     <p class="transaction-amount">${transAmountInput.value} zł<button class="delete"><i class="fas fa-times"></i></button></p>`
+
+    fundsArray.push(parseFloat(transAmountInput.value))
+    console.log(fundsArray);
+    addFunds()
 
 	assignTransaction(newTransaction)
 }
@@ -82,6 +88,14 @@ const selectIcon = category => {
 			categoryIcon = '<i class="fas fa-film"></i>'
 			break
 	}
+}
+
+const addFunds = () => {
+    const sum = fundsArray.reduce((total, amount) => {
+        return total + amount
+    })
+
+    availableMoney.textContent = sum
 }
 
 addTransBtn.addEventListener("click", showPanel)
