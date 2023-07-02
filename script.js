@@ -9,7 +9,7 @@ const incomeArea = document.querySelector(".income-area")
 const expenseArea = document.querySelector(".expenses-area")
 const availableMoney = document.querySelector(".available-money")
 
-const fundsArray = []
+const fundsArray = [0]
 let selectedCategory
 let categoryIcon
 
@@ -36,6 +36,17 @@ const checkForm = () => {
 	}
 }
 
+const removeTransaction = e => {
+	if (e.target.nodeName === "I") {
+		let amountToDelete = e.target.parentElement.parentElement.textContent
+		amountToDelete = parseFloat(amountToDelete)
+		const indexofDeletedItem = fundsArray.indexOf(amountToDelete)
+		fundsArray.splice(indexofDeletedItem, 1)
+		addFunds()
+		e.target.closest("div").remove()
+	}
+}
+
 const createNewtrans = () => {
 	const newTransaction = document.createElement("div")
 	newTransaction.classList.add("transaction")
@@ -47,9 +58,9 @@ const createNewtrans = () => {
 	newTransaction.innerHTML = `<p class="transaction-name">${categoryIcon}${transNameInput.value}</p>
     <p class="transaction-amount">${transAmountInput.value} zł<button class="delete"><i class="fas fa-times"></i></button></p>`
 
-    fundsArray.push(parseFloat(transAmountInput.value))
-    console.log(fundsArray);
-    addFunds()
+	fundsArray.push(parseFloat(transAmountInput.value))
+	console.log(fundsArray)
+	addFunds()
 
 	assignTransaction(newTransaction)
 }
@@ -91,19 +102,12 @@ const selectIcon = category => {
 }
 
 const addFunds = () => {
-    const sum = fundsArray.reduce((total, amount) => {
-        return total + amount
-    })
-
-    availableMoney.textContent = sum
+	const sum = fundsArray.reduce((total, amount) => total + amount)
+	availableMoney.textContent = sum
 }
 
 addTransBtn.addEventListener("click", showPanel)
 cancelTransBtn.addEventListener("click", closePanel)
 saveTransBtn.addEventListener("click", checkForm)
-
-console.dir(transCategorySelect)
-console.dir(transCategorySelect[0].textContent)
-console.dir(transCategorySelect[1].textContent)
-console.dir(transCategorySelect[2].textContent)
-console.dir(transCategorySelect[transCategorySelect.selectedIndex].textContent)
+incomeArea.addEventListener("click", removeTransaction)
+expenseArea.addEventListener("click", removeTransaction)
