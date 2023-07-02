@@ -97,6 +97,7 @@ h2.title {
 
 .transaction-name {
 	font-size: 18px;
+	text-transform: capitalize;
 }
 
 .transaction-name i {

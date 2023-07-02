@@ -8,8 +8,10 @@ const transCategorySelect = document.querySelector("#category")
 const incomeArea = document.querySelector(".income-area")
 const expenseArea = document.querySelector(".expenses-area")
 const availableMoney = document.querySelector(".available-money")
+const deleteAllTransactionsBtn = document.querySelector(".delete-all")
 
-const fundsArray = [0]
+
+let fundsArray = [0]
 let selectedCategory
 let categoryIcon
 
@@ -28,7 +30,6 @@ const checkForm = () => {
 		transAmountInput.value !== "" &&
 		transCategorySelect.value !== "none"
 	) {
-		console.log("ok")
 		createNewtrans()
 		closePanel()
 	} else {
@@ -50,18 +51,14 @@ const removeTransaction = e => {
 const createNewtrans = () => {
 	const newTransaction = document.createElement("div")
 	newTransaction.classList.add("transaction")
-
 	selectCategory()
-
 	selectIcon(selectedCategory)
 
 	newTransaction.innerHTML = `<p class="transaction-name">${categoryIcon}${transNameInput.value}</p>
     <p class="transaction-amount">${transAmountInput.value} zł<button class="delete"><i class="fas fa-times"></i></button></p>`
 
 	fundsArray.push(parseFloat(transAmountInput.value))
-	console.log(fundsArray)
 	addFunds()
-
 	assignTransaction(newTransaction)
 }
 
@@ -106,8 +103,18 @@ const addFunds = () => {
 	availableMoney.textContent = sum
 }
 
+const deleteAllTransactions = () => {
+	incomeArea.innerHTML = '<h3>Income:</h3>'
+	expenseArea.innerHTML = '<h3>Expenses:</h3>'
+	fundsArray = [0]
+	availableMoney.textContent = '0 zł'
+
+
+}
+
 addTransBtn.addEventListener("click", showPanel)
 cancelTransBtn.addEventListener("click", closePanel)
 saveTransBtn.addEventListener("click", checkForm)
 incomeArea.addEventListener("click", removeTransaction)
 expenseArea.addEventListener("click", removeTransaction)
+deleteAllTransactionsBtn.addEventListener('click', deleteAllTransactions)
