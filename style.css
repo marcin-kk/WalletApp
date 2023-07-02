@@ -8,6 +8,7 @@
 	--first-color: #ffecd1;
 	--second-color: #001524;
 	--border-color: rgba(0, 0, 0, 0.2);
+	--icon-color: #001524;
 }
 
 body {
@@ -94,6 +95,10 @@ h2.title {
 .transaction:last-child {
 	border-bottom: none;
 }
+
+.transactions i {
+	color: var(--icon-color);
+} 
 
 .transaction-name {
 	font-size: 18px;

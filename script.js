@@ -116,12 +116,14 @@ const changeToLightMode = () => {
 	root.style.setProperty("--first-color", "#ffecd1")
 	root.style.setProperty("--second-color", "#001524")
 	root.style.setProperty("--border-color", "rgba(0, 0, 0, 0.2)")
+	root.style.setProperty("--icon-color", "#001524")
 }
 
 const changeToDarkMode = () => {
 	root.style.setProperty("--first-color", "#001524")
 	root.style.setProperty("--second-color", "#ffecd1")
 	root.style.setProperty("--border-color", "rgba(255, 255, 255, 0.2)")
+	root.style.setProperty("--icon-color", "#ffecd1")
 }
 
 addTransBtn.addEventListener("click", showPanel)
