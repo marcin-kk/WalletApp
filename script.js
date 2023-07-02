@@ -9,7 +9,9 @@ const incomeArea = document.querySelector(".income-area")
 const expenseArea = document.querySelector(".expenses-area")
 const availableMoney = document.querySelector(".available-money")
 const deleteAllTransactionsBtn = document.querySelector(".delete-all")
-
+const lightBtn = document.querySelector(".light")
+const darkBtn = document.querySelector(".dark")
+let root = document.documentElement
 
 let fundsArray = [0]
 let selectedCategory
@@ -104,12 +106,22 @@ const addFunds = () => {
 }
 
 const deleteAllTransactions = () => {
-	incomeArea.innerHTML = '<h3>Income:</h3>'
-	expenseArea.innerHTML = '<h3>Expenses:</h3>'
+	incomeArea.innerHTML = "<h3>Income:</h3>"
+	expenseArea.innerHTML = "<h3>Expenses:</h3>"
 	fundsArray = [0]
-	availableMoney.textContent = '0 zł'
+	availableMoney.textContent = "0 zł"
+}
 
+const changeToLightMode = () => {
+	root.style.setProperty("--first-color", "#ffecd1")
+	root.style.setProperty("--second-color", "#001524")
+	root.style.setProperty("--border-color", "rgba(0, 0, 0, 0.4)")
+}
 
+const changeToDarkMode = () => {
+	root.style.setProperty("--first-color", "#001524")
+	root.style.setProperty("--second-color", "#ffecd1")
+	root.style.setProperty("--border-color", "white")
 }
 
 addTransBtn.addEventListener("click", showPanel)
@@ -117,4 +129,6 @@ cancelTransBtn.addEventListener("click", closePanel)
 saveTransBtn.addEventListener("click", checkForm)
 incomeArea.addEventListener("click", removeTransaction)
 expenseArea.addEventListener("click", removeTransaction)
-deleteAllTransactionsBtn.addEventListener('click', deleteAllTransactions)
+deleteAllTransactionsBtn.addEventListener("click", deleteAllTransactions)
+lightBtn.addEventListener("click", changeToLightMode)
+darkBtn.addEventListener("click", changeToDarkMode)
