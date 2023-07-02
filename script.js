@@ -115,13 +115,13 @@ const deleteAllTransactions = () => {
 const changeToLightMode = () => {
 	root.style.setProperty("--first-color", "#ffecd1")
 	root.style.setProperty("--second-color", "#001524")
-	root.style.setProperty("--border-color", "rgba(0, 0, 0, 0.4)")
+	root.style.setProperty("--border-color", "rgba(0, 0, 0, 0.2)")
 }
 
 const changeToDarkMode = () => {
 	root.style.setProperty("--first-color", "#001524")
 	root.style.setProperty("--second-color", "#ffecd1")
-	root.style.setProperty("--border-color", "white")
+	root.style.setProperty("--border-color", "rgba(255, 255, 255, 0.2)")
 }
 
 addTransBtn.addEventListener("click", showPanel)
